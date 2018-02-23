@@ -1,11 +1,12 @@
 import java.awt.Dimension;
+import java.awt.event.KeyListener;
 
 import javax.swing.JFrame;
 
 public class Pong2_0 {
 	JFrame display;
-	final int width = 500;
-	final int height = 800;
+	public static final int width = 500;
+	public static final int height = 800;
 	GamePanel panel = new GamePanel();
 
 	public static void main(String[] args) {
@@ -25,6 +26,7 @@ public class Pong2_0 {
 		display.getContentPane().setPreferredSize(new Dimension(width, height));
 		display.pack();
 		panel.StartGame();
+		display.addKeyListener(panel);
 
 	}
 }
