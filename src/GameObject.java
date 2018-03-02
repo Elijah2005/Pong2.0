@@ -5,6 +5,7 @@ public class GameObject {
 	int y;
 	int width;
 	int height;
+	
 
 	GameObject(int x, int y, int width, int height) {
 		this.x = x;
@@ -14,11 +15,11 @@ public class GameObject {
 	}
 
 	void update() {
-
+		
 
 	}
 
 	void draw(Graphics g) {
-		g.fillRect(x, y, width, height);
+		
 	}
 }
