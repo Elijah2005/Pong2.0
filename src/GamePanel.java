@@ -26,6 +26,12 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	Font subtitleFont2;
 
 	Paddle p = new Paddle(143, 770, 200, 20);
+	Ball b1 = new Ball(230, 750, 10, 10);
+
+	ObjectManager m = new ObjectManager(p,b1);
+	
+
+
 
 	GamePanel() {
 		clock = new Timer(1000 / 60, this);
@@ -88,21 +94,17 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 				currentState = MENU_STATE;
 			}
 		}
-		currentState += 1;
-		if (currentState > END_STATE) {
 
-			currentState = MENU_STATE;
-		}
-		if (e.getKeyCode() == e.VK_UP) {
+		if (e.getKeyCode() == KeyEvent.VK_UP) {
 			p.up = true;
 		}
-		if (e.getKeyCode() == e.VK_DOWN) {
+		if (e.getKeyCode() == KeyEvent.VK_DOWN) {
 			p.down = true;
 		}
-		if (e.getKeyCode() == e.VK_LEFT) {
+		if (e.getKeyCode() == KeyEvent.VK_LEFT) {
 			p.left = true;
 		}
-		if (e.getKeyCode() == e.VK_RIGHT) {
+		if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
 			p.right = true;
 		}
 	}
@@ -110,7 +112,18 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	@Override
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
-
+		if (e.getKeyCode() == e.VK_UP) {
+			p.up = false;
+		}
+		if (e.getKeyCode() == e.VK_DOWN) {
+			p.down = false;
+		}
+		if (e.getKeyCode() == e.VK_LEFT) {
+			p.left = false;
+		}
+		if (e.getKeyCode() == e.VK_RIGHT) {
+			p.right = false;
+		}
 	}
 
 	void updateMenuState() {
@@ -118,7 +131,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	}
 
 	void updateGameState() {
-		p.update();
+		m.update();
 	}
 
 	void updateEndState() {
@@ -149,7 +162,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 
 		g.fillRect(0, 0, Pong2_0.width, Pong2_0.height);
 
-		p.draw(g);
+		m.draw(g);
 	}
 
 	void drawEndState(Graphics g) {

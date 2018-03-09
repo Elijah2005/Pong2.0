@@ -14,7 +14,13 @@ public class Paddle extends GameObject {
 	}
 
 	void update() {
-
+		super.update();
+		if (right == true) {
+			x += speed;
+		}
+		if (left == true) {
+			x -= speed;
+		}
 	}
 
 	void draw(Graphics g) {
