@@ -26,12 +26,12 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	Font subtitleFont2;
 
 	Paddle p = new Paddle(143, 770, 200, 20);
-	Ball b1 = new Ball(230, 750, 10, 10);
 
-	ObjectManager m = new ObjectManager(p,b1);
-	
+	Ball b1 = new Ball(230, 740, 10, 10);
 
+	Paddle p2 = new Paddle(143, 10, 200, 20);
 
+	ObjectManager m = new ObjectManager(p, b1, p2);
 
 	GamePanel() {
 		clock = new Timer(1000 / 60, this);
@@ -97,15 +97,19 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 
 		if (e.getKeyCode() == KeyEvent.VK_UP) {
 			p.up = true;
+			p2.up = true;
 		}
 		if (e.getKeyCode() == KeyEvent.VK_DOWN) {
 			p.down = true;
+			p2.down = true;
 		}
 		if (e.getKeyCode() == KeyEvent.VK_LEFT) {
 			p.left = true;
+			p2.left = true;
 		}
 		if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
 			p.right = true;
+			p2.right = true;
 		}
 	}
 
@@ -114,15 +118,19 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		// TODO Auto-generated method stub
 		if (e.getKeyCode() == e.VK_UP) {
 			p.up = false;
+			p2.up = false;
 		}
 		if (e.getKeyCode() == e.VK_DOWN) {
 			p.down = false;
+			p2.down = false;
 		}
 		if (e.getKeyCode() == e.VK_LEFT) {
 			p.left = false;
+			p2.left = false;
 		}
 		if (e.getKeyCode() == e.VK_RIGHT) {
 			p.right = false;
+			p2.right = false;
 		}
 	}
 
