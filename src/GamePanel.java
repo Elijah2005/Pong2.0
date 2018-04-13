@@ -25,13 +25,13 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 
 	Font subtitleFont2;
 
-	Paddle p = new Paddle(143, 770, 200, 20);
+	Paddle paddle1 = new Paddle(143, 770, 200, 20);
 
 	Ball b1 = new Ball(230, 740, 10, 10);
 
-	Paddle p2 = new Paddle(143, 10, 200, 20);
+	Paddle paddle2 = new Paddle(143, 10, 200, 20);
 
-	ObjectManager m = new ObjectManager(p, b1, p2);
+	ObjectManager manager = new ObjectManager(paddle1, b1, paddle2);
 
 	GamePanel() {
 		clock = new Timer(1000 / 60, this);
@@ -96,20 +96,20 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		}
 
 		if (e.getKeyCode() == KeyEvent.VK_UP) {
-			p.up = true;
-			p2.up = true;
+			paddle1.up = true;
+			paddle2.up = true;
 		}
 		if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-			p.down = true;
-			p2.down = true;
+			paddle1.down = true;
+			paddle2.down = true;
 		}
 		if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-			p.left = true;
-			p2.left = true;
+			paddle1.left = true;
+			paddle2.left = true;
 		}
 		if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-			p.right = true;
-			p2.right = true;
+			paddle1.right = true;
+			paddle2.right = true;
 		}
 	}
 
@@ -117,20 +117,20 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
 		if (e.getKeyCode() == e.VK_UP) {
-			p.up = false;
-			p2.up = false;
+			paddle1.up = false;
+			paddle2.up = false;
 		}
 		if (e.getKeyCode() == e.VK_DOWN) {
-			p.down = false;
-			p2.down = false;
+			paddle1.down = false;
+			paddle2.down = false;
 		}
 		if (e.getKeyCode() == e.VK_LEFT) {
-			p.left = false;
-			p2.left = false;
+			paddle1.left = false;
+			paddle2.left = false;
 		}
 		if (e.getKeyCode() == e.VK_RIGHT) {
-			p.right = false;
-			p2.right = false;
+			paddle1.right = false;
+			paddle2.right = false;
 		}
 	}
 
@@ -139,7 +139,8 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	}
 
 	void updateGameState() {
-		m.update();
+		manager.update();
+		manager.manageEnemies();
 	}
 
 	void updateEndState() {
@@ -170,7 +171,8 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 
 		g.fillRect(0, 0, Pong2_0.width, Pong2_0.height);
 
-		m.draw(g);
+		manager.draw(g);
+
 	}
 
 	void drawEndState(Graphics g) {

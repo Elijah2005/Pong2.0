@@ -10,9 +10,9 @@ public class Ball extends GameObject {
 	}
 
 	void update() {
+
 		y -= speed;
 		if (y < 0) {
-			isAlive = false;
 		}
 	}
 
