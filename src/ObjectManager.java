@@ -7,7 +7,7 @@ public class ObjectManager {
 	Ball ball;
 	Paddle paddle2;
 	long enemyTimer = 0;
-	int enemySpawnTime = 2000;
+	int enemySpawnTime = 0;
 	ArrayList<Alien> alien = new ArrayList<Alien>();
 
 	ObjectManager(Paddle paddle, Ball ball, Paddle paddle2) {
@@ -41,7 +41,7 @@ public class ObjectManager {
 
 	public void manageEnemies() {
 		if (System.currentTimeMillis() - enemyTimer >= enemySpawnTime) {
-			addAlien(new Alien(new Random().nextInt(+350), new Random().nextInt(+450), 50, 50));
+			addAlien(new Alien(new Random().nextInt(+500), new Random().nextInt(+500) + 100, 50, 50));
 			enemyTimer = System.currentTimeMillis();
 		}
 

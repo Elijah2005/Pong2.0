@@ -135,7 +135,13 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	}
 
 	void updateMenuState() {
-
+		// g1.x++;
+		// g2.x--;
+		// if (g1.collisionBox.intersects(g2.collisionBox)) {
+		// System.out.println("Ouch");
+		// }
+		// g1.update();
+		// g2.update();
 	}
 
 	void updateGameState() {
@@ -143,22 +149,25 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		manager.manageEnemies();
 	}
 
+	// GameObject g1 = new GameObject(100, 300, 100, 100);
+	// GameObject g2 = new GameObject(300, 300, 100, 100);
+
 	void updateEndState() {
 
 	}
 
 	void drawMenuState(Graphics g) {
-		g.setColor(Color.BLUE);
+
+		// g.setColor(Color.BLUE);
 
 		g.fillRect(0, 0, Pong2_0.width, Pong2_0.height);
-
+		// g.fillRect(g2.x, g2.y, g2.width, g2.height);
 		g.setFont(titleFont);
-
+		// g.fillRect(g1.x, g1.y, g1.width, g1.height);
 		g.drawString("text", 100, 100);
-
 		g.setColor(Color.YELLOW);
 		g.setFont(titleFont);
-		g.drawString("PONG 2.0", 115, 260);
+		g.drawString("Pong 2.0", 115, 260);
 		g.setFont(subtitleFont);
 		g.drawString("Press ENTER to start", 116, 370);
 		g.setFont(subtitleFont2);
