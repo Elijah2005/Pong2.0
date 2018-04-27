@@ -10,7 +10,7 @@ public class Ball extends GameObject {
 	}
 
 	void update() {
-
+		super.update();
 		y -= speed;
 		if (y < 0) {
 		}

@@ -7,7 +7,7 @@ public class ObjectManager {
 	Ball ball;
 	Paddle paddle2;
 	long enemyTimer = 0;
-	int enemySpawnTime = 0;
+	int enemySpawnTime = 1300;
 	ArrayList<Alien> alien = new ArrayList<Alien>();
 
 	ObjectManager(Paddle paddle, Ball ball, Paddle paddle2) {
@@ -32,7 +32,6 @@ public class ObjectManager {
 			a.draw(g);
 
 		}
-		System.out.println(alien.size());
 	}
 
 	void addAlien(Alien a) {
@@ -49,5 +48,26 @@ public class ObjectManager {
 
 	void purgeObjects() {
 
+	}
+
+	void checkCollision() {
+		for (Alien a : alien) {
+
+			if (ball.collisionBox.intersects(a.collisionBox)) {
+
+				a.isAlive = false;
+
+			}
+		}
+		if (ball.collisionBox.intersects(paddle1.collisionBox)) {
+			ball.y += ball.speed * 2;
+			ball.speed = -ball.speed;
+			System.out.println("its working");
+		}
+		if (ball.collisionBox.intersects(paddle2.collisionBox)) {
+			ball.y += ball.speed * 2;
+			ball.speed = -ball.speed;
+			System.out.println("its working");
+		}
 	}
 }
