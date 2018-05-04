@@ -8,6 +8,7 @@ public class ObjectManager {
 	Paddle paddle2;
 	long enemyTimer = 0;
 	int enemySpawnTime = 1300;
+	int score = 0;
 	ArrayList<Alien> alien = new ArrayList<Alien>();
 
 	ObjectManager(Paddle paddle, Ball ball, Paddle paddle2) {
@@ -47,7 +48,12 @@ public class ObjectManager {
 	}
 
 	void purgeObjects() {
-
+		for (int i = 0; i < alien.size(); i++) {
+			Alien a = alien.get(i);
+			if (ball.collisionBox.intersects(a.collisionBox)) {
+				alien.remove(a);
+			}
+		}
 	}
 
 	void checkCollision() {
@@ -56,18 +62,26 @@ public class ObjectManager {
 			if (ball.collisionBox.intersects(a.collisionBox)) {
 
 				a.isAlive = false;
-
+				// System.out.println("alien");
+				ball.speed = -ball.speed;
+				score += 1;
+				System.out.println(" " + score);
 			}
 		}
 		if (ball.collisionBox.intersects(paddle1.collisionBox)) {
 			ball.y += ball.speed * 2;
 			ball.speed = -ball.speed;
-			System.out.println("its working");
+			// System.out.println("its working");
 		}
 		if (ball.collisionBox.intersects(paddle2.collisionBox)) {
 			ball.y += ball.speed * 2;
 			ball.speed = -ball.speed;
-			System.out.println("its working");
+			// System.out.println("its working");
 		}
 	}
+
+	void getScore() {
+
+	}
+
 }

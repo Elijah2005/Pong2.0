@@ -89,6 +89,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		// TODO Auto-generated method stub
 		if (e.getKeyCode() == KeyEvent.VK_ENTER) {
 			currentState += 1;
+
 			if (currentState > END_STATE) {
 
 				currentState = MENU_STATE;
@@ -200,7 +201,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		g.setFont(titleFont);
 		g.drawString("GAME OVER", 90, 260);
 		g.setFont(subtitleFont);
-		g.drawString("You killed 0 enemies", 133, 370);
+		g.drawString("You killed " + manager.score, 133, 370);
 		g.setFont(subtitleFont2);
 		g.drawString("Press ENTER to restart", 120, 500);
 	}
