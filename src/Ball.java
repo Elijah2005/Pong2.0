@@ -1,8 +1,8 @@
-import java.awt.Color;
 import java.awt.Graphics;
 
 public class Ball extends GameObject {
-	int speed = 15;
+	int speed = 12;
+	int xSpeed;
 
 	Ball(int x, int y, int width, int height) {
 		super(x, y, width, height);
@@ -14,10 +14,10 @@ public class Ball extends GameObject {
 		y -= speed;
 		if (y < 0) {
 		}
+		x += xSpeed;
 	}
 
 	void draw(Graphics g) {
-		g.setColor(Color.RED);
-		g.drawRect(x, y, width, height);
+		g.drawImage(GamePanel.bulletImg, x, y, width, height, null);
 	}
 }

@@ -5,7 +5,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
@@ -33,11 +36,36 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 
 	ObjectManager manager = new ObjectManager(paddle1, b1, paddle2);
 
+	// public static BufferedImage alienImg;
+
+	// public static BufferedImage rocketImg;
+
+	public static BufferedImage bulletImg;
+
+	// public static BufferedImage spaceImg;
+
 	GamePanel() {
 		clock = new Timer(1000 / 60, this);
 		titleFont = new Font("Georgia", titleFont.BOLD, 48);
 		subtitleFont = new Font("Arial", titleFont.BOLD, 24);
 		subtitleFont2 = new Font("Arial", titleFont.BOLD, 24);
+		try {
+
+			// alienImg = ImageIO.read(this.getClass().getResourceAsStream("alien.png"));
+
+			// rocketImg = ImageIO.read(this.getClass().getResourceAsStream("rocket.png"));
+
+			bulletImg = ImageIO.read(this.getClass().getResourceAsStream("bullet.png"));
+
+			// spaceImg = ImageIO.read(this.getClass().getResourceAsStream("space.png"));
+
+		} catch (IOException e) {
+
+			// TODO Auto-generated catch block
+
+			e.printStackTrace();
+
+		}
 	}
 
 	public void actionPerformed(ActionEvent e) {
@@ -111,6 +139,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
 			paddle1.right = true;
 			paddle2.right = true;
+
 		}
 	}
 
@@ -150,6 +179,9 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		manager.manageEnemies();
 		manager.checkCollision();
 		manager.purgeObjects();
+		paddle1.update();
+		paddle2.update();
+		b1.update();
 
 	}
 
@@ -185,6 +217,12 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		g.fillRect(0, 0, Pong2_0.width, Pong2_0.height);
 
 		manager.draw(g);
+
+		paddle1.draw(g);
+
+		paddle2.draw(g);
+
+		b1.draw(g);
 
 	}
 
