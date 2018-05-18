@@ -14,7 +14,7 @@ public class Ball extends GameObject {
 		y -= speed;
 		if (y < 0) {
 		}
-		x += xSpeed;
+		x -= xSpeed;
 	}
 
 	void draw(Graphics g) {
