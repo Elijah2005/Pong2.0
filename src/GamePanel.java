@@ -9,6 +9,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
@@ -36,13 +37,13 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 
 	ObjectManager manager = new ObjectManager(paddle1, b1, paddle2);
 
-	// public static BufferedImage alienImg;
+	public static BufferedImage RocketImg;
 
-	// public static BufferedImage rocketImg;
+	public static BufferedImage paddleImg;
 
 	public static BufferedImage bulletImg;
 
-	// public static BufferedImage spaceImg;
+	public static BufferedImage spaceImg;
 
 	GamePanel() {
 		clock = new Timer(1000 / 60, this);
@@ -51,13 +52,11 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		subtitleFont2 = new Font("Arial", titleFont.BOLD, 24);
 		try {
 
-			// alienImg = ImageIO.read(this.getClass().getResourceAsStream("alien.png"));
-
-			// rocketImg = ImageIO.read(this.getClass().getResourceAsStream("rocket.png"));
+			paddleImg = ImageIO.read(this.getClass().getResourceAsStream("paddle.png"));
 
 			bulletImg = ImageIO.read(this.getClass().getResourceAsStream("bullet.png"));
 
-			// spaceImg = ImageIO.read(this.getClass().getResourceAsStream("space.png"));
+			spaceImg = ImageIO.read(this.getClass().getResourceAsStream("space.png"));
 
 		} catch (IOException e) {
 
@@ -141,6 +140,9 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 			paddle2.right = true;
 
 		}
+		if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+			JOptionPane.showMessageDialog(null, "Use left and right arrow to move");
+		}
 	}
 
 	@Override
@@ -162,6 +164,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 			paddle1.right = false;
 			paddle2.right = false;
 		}
+
 	}
 
 	void updateMenuState() {
