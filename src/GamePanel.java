@@ -120,6 +120,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 			if (currentState > END_STATE) {
 
 				currentState = MENU_STATE;
+
 			}
 		}
 
@@ -185,6 +186,9 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		paddle1.update();
 		paddle2.update();
 		b1.update();
+		if (b1.dead) {
+			currentState = END_STATE;
+		}
 
 	}
 
@@ -242,7 +246,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		g.setFont(titleFont);
 		g.drawString("GAME OVER", 90, 260);
 		g.setFont(subtitleFont);
-		g.drawString("You killed " + manager.score, 133, 370);
+		g.drawString("You killed " + manager.score, 170, 370);
 		g.setFont(subtitleFont2);
 		g.drawString("Press ENTER to restart", 120, 500);
 	}

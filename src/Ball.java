@@ -1,8 +1,9 @@
 import java.awt.Graphics;
 
 public class Ball extends GameObject {
-	int speed = 12;
-	int xSpeed;
+	int speed = 5;
+	int xSpeed = 3;
+	boolean dead = false;
 
 	Ball(int x, int y, int width, int height) {
 		super(x, y, width, height);
@@ -13,8 +14,18 @@ public class Ball extends GameObject {
 		super.update();
 		y -= speed;
 		if (y < 0) {
+			dead = true;
 		}
-		x -= xSpeed;
+		if (y > 800) {
+			dead = true;
+		}
+		if (x <= 0) {
+			xSpeed = -xSpeed;
+		} else if (x >= Pong2_0.width) {
+			xSpeed = -xSpeed;
+		}
+
+		x += xSpeed;
 	}
 
 	void draw(Graphics g) {

@@ -66,6 +66,7 @@ public class ObjectManager {
 				ball.speed = -ball.speed;
 				score += 1;
 				System.out.println(" " + score);
+				ball.speed += 1;
 			}
 		}
 		if (ball.collisionBox.intersects(paddle1.collisionBox)) {
