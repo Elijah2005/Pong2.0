@@ -114,6 +114,13 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	@Override
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
+		if (currentState == MENU_STATE) {
+			// System.out.println("restart");
+			paddle1 = new Paddle(paddle1.x, paddle1.y, paddle1.width, paddle1.height);
+			paddle2 = new Paddle(paddle2.x, paddle2.y, paddle2.width, paddle2.height);
+			b1 = new Ball(230, 740, b1.width, b1.height);
+			manager = new ObjectManager(paddle1, b1, paddle2);
+		}
 		if (e.getKeyCode() == KeyEvent.VK_ENTER) {
 			currentState += 1;
 
@@ -144,6 +151,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		if (e.getKeyCode() == KeyEvent.VK_SPACE) {
 			JOptionPane.showMessageDialog(null, "Use left and right arrow to move");
 		}
+
 	}
 
 	@Override
@@ -187,6 +195,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		paddle2.update();
 		b1.update();
 		if (b1.dead) {
+			// System.out.println("dead");
 			currentState = END_STATE;
 		}
 

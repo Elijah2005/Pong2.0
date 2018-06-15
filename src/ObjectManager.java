@@ -52,6 +52,7 @@ public class ObjectManager {
 			Alien a = alien.get(i);
 			if (ball.collisionBox.intersects(a.collisionBox)) {
 				alien.remove(a);
+
 			}
 		}
 	}
@@ -66,7 +67,7 @@ public class ObjectManager {
 				ball.speed = -ball.speed;
 				score += 1;
 				System.out.println(" " + score);
-				ball.speed += 1;
+				ball.speed += 2;
 			}
 		}
 		if (ball.collisionBox.intersects(paddle1.collisionBox)) {

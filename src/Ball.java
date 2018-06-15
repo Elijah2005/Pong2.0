@@ -1,7 +1,7 @@
 import java.awt.Graphics;
 
 public class Ball extends GameObject {
-	int speed = 5;
+	int speed = 3;
 	int xSpeed = 3;
 	boolean dead = false;
 
